@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymBros Elite - Ficha de Inscripción</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           GYM BROS ELITE - DISEÑO VISUAL COMPLETO
+           Paleta: Negro (#000000), Blanco (#FFFFFF), Rojo (#E50914)
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --negro-fondo: #050505;
+            --negro-card: #121212;
+            --negro-input: #1E1E1E;
+            --blanco: #FFFFFF;
+            --blanco-secundario: #B0B0B0;
+            --rojo-principal: #E50914;
+            --rojo-hover: #FF1F2C;
+            --rojo-sutil: rgba(229, 9, 20, 0.1);
+            --gris-borde: #333333;
+            --verde-exito: #00C851;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--negro-fondo);
+            color: var(--blanco);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           HEADER FIJO CON LOGO Y PROGRESS BAR
+           ============================================ */
+        
+        .header-fijo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, var(--negro-fondo) 0%, rgba(5,5,5,0.95) 100%);
+            padding: 15px 20px;
+            z-index: 1000;
+            border-bottom: 1px solid var(--gris-borde);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--blanco);
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--rojo-principal);
+        }
+
+        .progress-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .progress-label {
+            font-size: 12px;
+            color: var(--blanco-secundario);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--gris-borde);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--rojo-principal);
+            width: 11.11%;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px var(--rojo-principal);
+        }
+
+        /* ============================================
+           CONTENEDOR PRINCIPAL DEL FORMULARIO
+           ============================================ */
+        
+        .main-container {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+        }
+
+        .form-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background: var(--negro-card);
+            border-radius: 16px;
+            border: 1px solid var(--gris-borde);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        /* ============================================
+           PÁGINAS DEL FORMULARIO
+           ============================================ */
+        
+        .form-page {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .form-page.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           LANDING PAGE - PÁGINA 1
+           ============================================ */
+        
+        .landing-content {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .tagline .highlight {
+            color: var(--rojo-principal);
+        }
+
+        .proposal {
+            font-size: 16px;
+            color: var(--blanco-secundario);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .proposal strong {
+            color: var(--blanco);
+        }
+
+        .proposal .gym-bros {
+            color: var(--rojo-principal);
+            font-weight: 600;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 14px;
+            color: var(--blanco-secundario);
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 3px solid var(--rojo-principal);
+            background: var(--negro-input);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            color: var(--blanco-secundario);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .time-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--rojo-sutil);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--rojo-principal);
+            margin-bottom: 30px;
+        }
+
+        /* ============================================
+           ENCABEZADOS DE SECCIÓN
+           ============================================ */
+        
+        .section-header {
+            margin-bottom: 30px;
+        }
+
+        .section-letter {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            color: var(--rojo-principal);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--blanco);
+        }
+
+        .section-divider {
+            height: 3px;
+            width: 60px;
+            background: var(--rojo-principal);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           CAMPOS DE TEXTO
+           ============================================ */
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blanco);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-label .optional {
+            color: var(--blanco-secundario);
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 18px;
+            background: var(--negro-input);
+            border: 2px solid var(--gris-borde);
+            border-radius: 8px;
+            color: var(--blanco);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--blanco-secundario);
+            opacity: 0.6;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--rojo-principal);
+            box-shadow: 0 0 0 3px var(--rojo-sutil);
+        }
+
+        .form-input.error {
+            border-color: #FF4444;
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* ============================================
+           RADIO BUTTONS Y CHECKBOXES ESTILIZADOS
+           ============================================ */
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .options-grid.single-column {
+            grid-template-columns: 1fr;
+        }
+
+        .options-grid.three-column {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @media (max-width: 500px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .options-grid.three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option-card {
+            position: relative;
+        }
+
+        .option-card input[type="radio"],
+        .option-card input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            background: var(--negro-input);
+            border: 2px solid var(--gris-borde);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .option-label:hover {
+            border-color: var(--rojo-principal);
+        }
+
+        .option-card input[type="radio"]:checked + .option-label,
+        .option-card input[type="checkbox"]:checked + .option-label {
+            border-color: var(--rojo-principal);
+            background: var(--rojo-sutil);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+        }
+
+        .option-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: var(--negro-input);
+            border: 2px solid var(--gris-borde);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container:hover {
+            border-color: var(--rojo-principal);
+        }
+
+        .checkbox-container input:checked + .checkbox-custom {
+            background: var(--rojo-principal);
+            border-color: var(--rojo-principal);
+        }
+
+        .checkbox-custom {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border: 2px solid var(--gris-borde);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin-top: 2px;
+        }
+
+        .checkbox-custom::after {
+            content: '✓';
+            color: var(--blanco);
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .checkbox-container input:checked + .checkbox-custom::after {
+            display: block;
+        }
+
+        .checkbox-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SECCIÓN DE CONSENTIMIENTO
+           ============================================ */
+        
+        .consent-section {
+            background: var(--negro-input);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .consent-text {
+            font-size: 13px;
+            color: var(--blanco-secundario);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .signature-date {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* ============================================
+           BOTONES DE NAVEGACIÓN
+           ============================================ */
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gris-borde);
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--blanco-secundario);
+            border: 2px solid var(--gris-borde);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--blanco);
+            color: var(--blanco);
+        }
+
+        .btn-primary {
+            background: var(--rojo-principal);
+            color: var(--blanco);
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--rojo-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ============================================
+           PÁGINA DE ÉXITO
+           ============================================ */
+        
+        .success-page {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--blanco);
+            margin-bottom: 15px;
+        }
+
+        .success-message {
+            font-size: 16px;
+            color: var(--blanco-secundario);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .next-steps {
+            background: var(--negro-input);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .next-steps h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--rojo-principal);
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--blanco-secundario);
+            font-size: 14px;
+        }
+
+        .next-steps li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--rojo-principal);
+        }
+
+        /* ============================================
+           INDICADOR DE CARGA
+           ============================================ */
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 5, 5, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+        }
+
+        .loading-content {
+            text-align: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--gris-borde);
+            border-top-color: var(--rojo-principal);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blanco);
+        }
+
+        /* ============================================
+           MENSAJE DE ERROR
+           ============================================ */
+        
+        .error-message {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #FF4444;
+            color: #FF4444;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        /* ============================================
+           NOTA DE PRIVACIDAD
+           ============================================ */
+        
+        .privacy-note {
+            font-size: 11px;
+            color: var(--blanco-secundario);
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        
+        @media (max-width: 600px) {
+            .tagline {
+                font-size: 28px;
+            }
+            
+            .form-card {
+                margin: 0 15px;
+                padding: 30px 20px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column-reverse;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .signature-date {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Fijo -->
+    <header class="header-fijo">
+        <div class="logo-container">
+            <div class="logo-text">GYM <span>BROS</span> ÉLITE</div>
+        </div>
+        <div class="progress-container">
+            <div class="progress-label">Progreso: <span id="progress-text">11%</span></div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <main class="main-container">
+        <div class="form-card">
+            <form id="gymbros-form" onsubmit="return false;">
+                
+                <!-- Página 1: Landing -->
+                <div class="form-page active" data-page="1">
+                    <div class="landing-content">
+                        <h1 class="tagline">¿ESTÁS DISPUESTO A <span class="highlight">CAMBIAR</span> TU FÍSICO?</h1>
+                        
+                        <p class="proposal">
+                            TE REGALAMOS EL PRIMER PLAN DE ENTRENAMIENTO Y TE ACOMPAÑAREMOS CON REVISIONES CADA SEMANA PARA REVISAR TU PROGRESO.<br><br>
+                            SI TE GUSTA TE UNIRÁS A NUESTRO EQUIPO <span class="gym-bros">GYM BROS</span>.
+                        </p>
+                        
+                        <div class="slogan">
+                            "No estarás solo en esto. Estaremos a tu disposición siempre que lo necesites."
+                        </div>
+                        
+                        <p class="intro-text">
+                            Antes de crear tu plan personalizado, necesitamos conocerte mejor. Esta ficha de evaluación nos ayudará a diseñar un programa que se ajuste perfectamente a tu situación actual, tus metas y tu estilo de vida. Tómate tu tiempo para responder con honestidad: mientras más preciso seas, mejores serán los resultados.
+                        </p>
+                        
+                        <div class="time-indicator">
+                            ⏱️ Tiempo estimado: 5-7 minutos
+                        </div>
+                    </div>
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">COMENZAR MI TRANSFORMACIÓN</button>
+                    </div>
+                </div>
+
+                <!-- Página 2: Sección A - Información Básica -->
+                <div class="form-page" data-page="2">
+                    <div class="section-header">
+                        <div class="section-letter">Sección A</div>
+                        <h2 class="section-title">Información Básica</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nombre y Apellidos *</label>
+                        <input type="text" class="form-input" name="A1_Nombre_Apellidos" placeholder="Tu nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Edad *</label>
+                        <input type="number" class="form-input" name="A2_Edad" placeholder="Tu edad actual" min="16" max="80" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Altura *</label>
+                        <input type="text" class="form-input" name="A3_Altura" placeholder="Ejemplo: 1.75 m o 175 cm" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Peso Actual <span class="optional">(opcional)</span></label>
+                        <input type="text" class="form-input" name="A4_Peso_Actual" placeholder="Ejemplo: 70 kg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Ocupación *</label>
+                        <input type="text" class="form-input" name="A5_Ocupacion" placeholder="Tu profesión o actividad laboral" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cuál es tu nivel actual de actividad física? *</label>
+                        <div class="options-grid">
+                            <div class="option-card">
+                                <input type="radio" name="A6_Nivel_Actividad" id="nivel_sedentario" value="Sedentario" required>
+                                <label class="option-label" for="nivel_sedentario">
+                                    <span class="option-icon">🛋️</span> Sedentario
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A6_Nivel_Actividad" id="nivel_ligero" value="Ligero">
+                                <label class="option-label" for="nivel_ligero">
+                                    <span class="option-icon">🚶</span> Ligero
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A6_Nivel_Actividad" id="nivel_moderado" value="Moderado">
+                                <label class="option-label" for="nivel_moderado">
+                                    <span class="option-icon">🏃</span> Moderado
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A6_Nivel_Actividad" id="nivel_alto" value="Alto">
+                                <label class="option-label" for="nivel_alto">
+                                    <span class="option-icon">💪</span> Alto
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A6_Nivel_Actividad" id="nivel_atleta" value="Atleta">
+                                <label class="option-label" for="nivel_atleta">
+                                    <span class="option-icon">🏆</span> Atleta
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 3: Conocerte Mejor -->
+                <div class="form-page" data-page="3">
+                    <div class="section-header">
+                        <div class="section-letter">Conócenos</div>
+                        <h2 class="section-title">Personalización</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Qué te ha funcionado o no en el pasado? *</label>
+                        <textarea class="form-input" name="A7_Experiencia_Pasada" placeholder="Describe experiencias previas con entrenamiento o alimentación. ¿Qué funcionó y qué no?" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Qué te motiva a cambiar ahora? *</label>
+                        <textarea class="form-input" name="A8_Motivacion" placeholder="Tu razón principal para iniciar este proceso..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Qué nivel de acompañamiento necesitas? *</label>
+                        <div class="options-grid single-column">
+                            <div class="option-card">
+                                <input type="radio" name="A9_Acompanamiento" id="aco_minimo" value="Mínimo" required>
+                                <label class="option-label" for="aco_minimo">
+                                    <strong>Mínimo:</strong> Plan con revisiones mensuales y soporte por mensaje
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A9_Acompanamiento" id="aco_moderado" value="Moderado">
+                                <label class="option-label" for="aco_moderado">
+                                    <strong>Moderado:</strong> Plan con revisiones quincenales y sesiones de seguimiento
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="A9_Acompanamiento" id="aco_intensivo" value="Intensivo">
+                                <label class="option-label" for="aco_intensivo">
+                                    <strong>Intensivo:</strong> Plan con revisiones semanales y acompañamiento diario
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 4: Sección B - Objetivos -->
+                <div class="form-page" data-page="4">
+                    <div class="section-header">
+                        <div class="section-letter">Sección B</div>
+                        <h2 class="section-title">Objetivos</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cuál es tu objetivo principal? (Selecciona todas las que apliquen) *</label>
+                        <div class="options-grid">
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Perdida_Grasa" id="obj_grasa" value="Sí">
+                                <label class="option-label" for="obj_grasa">
+                                    <span class="option-icon">🔥</span> Pérdida de grasa
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Ganancia_Muscular" id="obj_musculo" value="Sí">
+                                <label class="option-label" for="obj_musculo">
+                                    <span class="option-icon">💪</span> Ganancia muscular
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Nutricion" id="obj_nutricion" value="Sí">
+                                <label class="option-label" for="obj_nutricion">
+                                    <span class="option-icon">🥗</span> Recomendaciones nutricionales
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Rendimiento" id="obj_rendimiento" value="Sí">
+                                <label class="option-label" for="obj_rendimiento">
+                                    <span class="option-icon">⚡</span> Mejorar rendimiento
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Salud" id="obj_salud" value="Sí">
+                                <label class="option-label" for="obj_salud">
+                                    <span class="option-icon">❤️</span> Salud y bienestar
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="B1_Objetivo_Otro" id="obj_otro" value="Sí">
+                                <label class="option-label" for="obj_otro">
+                                    <span class="option-icon">✨</span> Otro
+                                </label>
+                            </div>
+                        </div>
+                        <input type="text" class="form-input" name="B1_Objetivo_Otro_Texto" placeholder="Especifica otro objetivo..." style="margin-top: 10px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Describe brevemente qué quieres lograr y por qué *</label>
+                        <textarea class="form-input" name="B2_Descripcion_Objetivo" placeholder="Sé específico sobre tus metas y motivaciones..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Hay alguna fecha importante o motivo que influya? <span class="optional">(opcional)</span></label>
+                        <input type="text" class="form-input" name="B3_Fecha_Importante" placeholder="Fecha especial, evento, motivaciones específicas...">
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 5: Sección C - Estado Actual y Hábitos -->
+                <div class="form-page" data-page="5">
+                    <div class="section-header">
+                        <div class="section-letter">Sección C</div>
+                        <h2 class="section-title">Estado Actual y Hábitos</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cuántas veces a la semana haces actividad física actualmente? *</label>
+                        <input type="number" class="form-input" name="C1_Frecuencia_Actividad" placeholder="Número del 0 al 7" min="0" max="7" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cómo describirías tu alimentación actual? *</label>
+                        <textarea class="form-input" name="C2_Alimentacion_Actual" placeholder="Sé honesto, sin juicios..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Tienes restricciones o preferencias alimentarias? *</label>
+                        <div class="options-grid">
+                            <div class="option-card">
+                                <input type="checkbox" name="C3_Vegetariano" id="diet_vegetariano" value="Sí">
+                                <label class="option-label" for="diet_vegetariano">Vegetariano</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="C3_Vegano" id="diet_vegano" value="Sí">
+                                <label class="option-label" for="diet_vegano">Vegano</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="C3_Sin_Gluten" id="diet_gluten" value="Sí">
+                                <label class="option-label" for="diet_gluten">Sin gluten</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="C3_Sin_Lactosa" id="diet_lactosa" value="Sí">
+                                <label class="option-label" for="diet_lactosa">Sin lactosa</label>
+                            </div>
+                        </div>
+                        <input type="text" class="form-input" name="C3_Intolerancias_Texto" placeholder="Intolerancias específicas..." style="margin-top: 10px;">
+                        <input type="text" class="form-input" name="C3_Otro_Texto" placeholder="Otra restricción..." style="margin-top: 10px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cómo es tu calidad de sueño? *</label>
+                        <div class="options-grid three-column">
+                            <div class="option-card">
+                                <input type="radio" name="C4_Calidad_Sueno" id="sueno_malo" value="Malo" required>
+                                <label class="option-label" for="sueno_malo">😴 Malo</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="C4_Calidad_Sueno" id="sueno_regular" value="Regular">
+                                <label class="option-label" for="sueno_regular">🛌 Regular</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="C4_Calidad_Sueno" id="sueno_bueno" value="Bueno">
+                                <label class="option-label" for="sueno_bueno">🌟 Bueno</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cuántas horas duermes aproximadamente? *</label>
+                        <input type="number" class="form-input" name="C5_Horas_Sueno" placeholder="Horas de sueño" min="3" max="12" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nivel de estrés percibido actualmente *</label>
+                        <div class="options-grid three-column">
+                            <div class="option-card">
+                                <input type="radio" name="C6_Nivel_Estres" id="estres_bajo" value="Bajo" required>
+                                <label class="option-label" for="estres_bajo">🟢 Bajo</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="C6_Nivel_Estres" id="estres_medio" value="Medio">
+                                <label class="option-label" for="estres_medio">🟡 Medio</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="radio" name="C6_Nivel_Estres" id="estres_alto" value="Alto">
+                                <label class="option-label" for="estres_alto">🔴 Alto</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 6: Sección D - Salud y Lesiones -->
+                <div class="form-page" data-page="6">
+                    <div class="section-header">
+                        <div class="section-letter">Sección D</div>
+                        <h2 class="section-title">Salud y Consideraciones</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <p class="intro-text" style="margin-bottom: 25px;">
+                        Las siguientes preguntas nos ayudan a crear un programa seguro y efectivo. Tu información es confidencial y será utilizada únicamente para personalizar tu entrenamiento. Si algo no deseas responder, puedes dejarlo en blanco.
+                    </p>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Tienes actualmente alguna molestia, dolor o lesión que debamos considerar? <span class="optional">(opcional)</span></label>
+                        <textarea class="form-input" name="D1_Molestia_Actual" placeholder="Describe cualquier molestia actual..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Has tenido lesiones o cirugías relevantes para el entrenamiento? <span class="optional">(opcional)</span></label>
+                        <textarea class="form-input" name="D2_Lesiones_Pasadas" placeholder="Historial médico relevante..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Estás bajo control médico por alguna condición o tomas medicación? <span class="optional">(opcional)</span></label>
+                        <textarea class="form-input" name="D3_Medicacion_Condicion" placeholder="Medicamentos o condiciones bajo tratamiento..."></textarea>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 7: Sección E - Preferencias y Logística -->
+                <div class="form-page" data-page="7">
+                    <div class="section-header">
+                        <div class="section-letter">Sección E</div>
+                        <h2 class="section-title">Preferencias y Logística</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Hay algo que te gustaría evitar en tu entrenamiento? *</label>
+                        <textarea class="form-input" name="E1_Evitar_Entrenamiento" placeholder="Ejemplo: ejercicios específicos, metodologías que no te gusten..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Cuántos días y cuánto tiempo puedes dedicar al entrenamiento semanalmente? *</label>
+                        <input type="text" class="form-input" name="E2_Tiempo_Disponible" placeholder="Ejemplo: '3 días, 45 minutos cada uno'" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Dónde entrenarás principalmente? *</label>
+                        <div class="options-grid">
+                            <div class="option-card">
+                                <input type="checkbox" name="E3_Lugar_Gym" id="lugar_gym" value="Sí" required>
+                                <label class="option-label" for="lugar_gym">
+                                    <span class="option-icon">🏋️</span> Gimnasio
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="E3_Lugar_Casa" id="lugar_casa" value="Sí">
+                                <label class="option-label" for="lugar_casa">
+                                    <span class="option-icon">🏠</span> Casa
+                                </label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="E3_Lugar_AireLibre" id="lugar_aire" value="Sí">
+                                <label class="option-label" for="lugar_aire">
+                                    <span class="option-icon">🌳</span> Aire libre
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Preferencias de ejercicio <span class="optional">(opcional)</span></label>
+                        <div class="options-grid">
+                            <div class="option-card">
+                                <input type="checkbox" name="E4_Preferencia_Pesas" id="pref_pesas" value="Sí">
+                                <label class="option-label" for="pref_pesas">🏋️ Pesas</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="E4_Preferencia_Cardio" id="pref_cardio" value="Sí">
+                                <label class="option-label" for="pref_cardio">🏃 Cardio</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="E4_Preferencia_Funcional" id="pref_funcional" value="Sí">
+                                <label class="option-label" for="pref_funcional">⚡ Funcional</label>
+                            </div>
+                            <div class="option-card">
+                                <input type="checkbox" name="E4_Preferencia_Mixto" id="pref_mixto" value="Sí">
+                                <label class="option-label" for="pref_mixto">🔄 Mixto</label>
+                            </div>
+                        </div>
+                        <input type="text" class="form-input" name="E4_Otro_Texto" placeholder="Otra preferencia..." style="margin-top: 10px;">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">¿Preferencias alimentarias o culturales relevantes? <span class="optional">(opcional)</span></label>
+                        <textarea class="form-input" name="E5_Preferencias_Adicionales" placeholder="Anything else we should know..."></textarea>
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="nextPage()">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Página 8: Sección F - Consentimiento -->
+                <div class="form-page" data-page="8">
+                    <div class="section-header">
+                        <div class="section-letter">Sección F</div>
+                        <h2 class="section-title">Consentimiento y Privacidad</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    
+                    <div class="consent-section">
+                        <p class="consent-text">
+                            Confirmo que la información proporcionada es veraz en la medida de mi conocimiento y entiendo que el plan de entrenamiento y alimentación está basado en estos datos. También acepto que podré detener o modificar el programa si siento incomodidad o malestar.<br><br>
+                            Autorizo el uso de mis datos únicamente para la elaboración de mi plan personalizado y entiendo que puedo solicitar su eliminación en cualquier momento.
+                        </p>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="F1_Acepto_Terminos" value="Sí" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Acepto los términos y condiciones descritos arriba</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="F2_No_Acepto" value="Sí">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">No acepto</span>
+                            </label>
+                        </div>
+                        
+                        <div class="signature-date">
+                            <div class="form-group">
+                                <label class="form-label">Firma</label>
+                                <input type="text" class="form-input" name="F3_Firma" placeholder="Tu firma o nombre completo">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Fecha</label>
+                                <input type="date" class="form-input" name="F4_Fecha" id="fecha_actual">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="error-message" id="consent-error">
+                        Debes aceptar los términos para continuar.
+                    </div>
+                    
+                    <div class="nav-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevPage()">← Atrás</button>
+                        <button type="button" class="btn btn-primary" onclick="validateAndSubmit()">ENVIAR MI FICHA</button>
+                    </div>
+                    
+                    <p class="privacy-note">
+                        Al enviar este formulario, aceptas que GymBros use tu información para contactarte y elaborar tu plan personalizado.
+                    </p>
+                </div>
+
+                <!-- Página 9: Éxito -->
+                <div class="form-page" data-page="9">
+                    <div class="success-page">
+                        <div class="success-icon">✓</div>
+                        <h2 class="success-title">¡GRACIAS POR CONFIAR EN GYM BROS!</h2>
+                        <p class="success-message">
+                            Hemos recibido tu información correctamente.<br>
+                            Nuestro equipo está emocionado de acompañarte en tu proceso de transformación.
+                        </p>
+                        
+                        <div class="next-steps">
+                            <h4>Próximos Pasos</h4>
+                            <ul>
+                                <li>Nuestro equipo revisará tu ficha de evaluación</li>
+                                <li>Te contactaremos en las próximas 24-48 horas</li>
+                                <li>Agendaremos tu primera sesión de planificación</li>
+                                <li>Recibirás acceso a tu plan de entrenamiento gratuito</li>
+                            </ul>
+                        </div>
+                        
+                        <p class="success-message" style="margin-top: 30px;">
+                            Mientras tanto, síguenos en Instagram: <strong style="color: var(--rojo-principal);">@gym.bros.elite</strong>
+                        </p>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </main>
+
+    <!-- Overlay de Carga -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div class="loading-text">Enviando tu información...</div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURACIÓN - URL DEL APPS SCRIPT
+        // ============================================
+        // IMPORTANTE: Reemplaza esta URL con la de tu despliegue
+        const SCRIPT_URL = 'https://script.google.com/macros/s/TU_DEPLOYMENT_ID/exec';
+        
+        // ============================================
+        // VARIABLES DE ESTADO
+        // ============================================
+        let currentPage = 1;
+        const totalPages = 9;
+        
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            setFechaActual();
+        });
+        
+        function setFechaActual() {
+            const today = new Date().toISOString().split('T')[0];
+            const fechaInput = document.getElementById('fecha_actual');
+            if (fechaInput) {
+                fechaInput.value = today;
+            }
+        }
+        
+        // ============================================
+        // NAVEGACIÓN ENTRE PÁGINAS
+        // ============================================
+        function nextPage() {
+            if (validateCurrentPage()) {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                    updateProgress();
+                }
+            }
+        }
+        
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+                updateProgress();
+            }
+        }
+        
+        function showPage(pageNum) {
+            document.querySelectorAll('.form-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.querySelector(`.form-page[data-page="${pageNum}"]`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function updateProgress() {
+            const progress = (currentPage / totalPages) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = Math.round(progress) + '%';
+        }
+        
+        // ============================================
+        // VALIDACIÓN
+        // ============================================
+        function validateCurrentPage() {
+            const currentPageEl = document.querySelector(`.form-page[data-page="${currentPage}"]`);
+            const requiredFields = currentPageEl.querySelectorAll('[required]');
+            let isValid = true;
+            
+            // Validar campos de texto requeridos
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox' || field.type === 'radio') {
+                    const groupName = field.name;
+                    const groupChecked = currentPageEl.querySelector(`input[name="${groupName}"]:checked`);
+                    if (!groupChecked) {
+                        isValid = false;
+                        field.closest('.option-card')?.classList.add('error');
+                    } else {
+                        field.closest('.option-card')?.classList.remove('error');
+                    }
+                } else if (field.value.trim() === '') {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            // Validación especial para checkboxes de la página 8
+            if (currentPage === 8) {
+                const noAcepto = document.querySelector('input[name="F2_No_Acepto"]:checked');
+                const acepto = document.querySelector('input[name="F1_Acepto_Terminos"]:checked');
+                const errorMsg = document.getElementById('consent-error');
+                
+                if (noAcepto) {
+                    isValid = false;
+                    errorMsg.textContent = 'Debes aceptar los términos para continuar.';
+                    errorMsg.classList.add('active');
+                } else if (!acepto) {
+                    isValid = false;
+                    errorMsg.textContent = 'Debes aceptar los términos para continuar.';
+                    errorMsg.classList.add('active');
+                } else {
+                    errorMsg.classList.remove('active');
+                }
+            }
+            
+            return isValid;
+        }
+        
+        // ============================================
+        // ENVÍO DEL FORMULARIO
+        // ============================================
+        function validateAndSubmit() {
+            if (!validateCurrentPage()) {
+                return false;
+            }
+            
+            // Mostrar loading
+            document.getElementById('loading-overlay').classList.add('active');
+            
+            // Recopilar datos
+            const formData = new FormData(document.getElementById('gymbros-form'));
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Agregar timestamp
+            data['Timestamp'] = new Date().toISOString();
+            
+            // Enviar a Google Sheets
+            sendToGoogleSheets(data);
+            
+            return false;
+        }
+        
+        function sendToGoogleSheets(data) {
+            // Mostrar spinner de carga
+            document.getElementById('loading-overlay').classList.add('active');
+            
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // Si no-cors, siempre entra aquí aunque haya error
+                console.log('Datos enviados exitosamente');
+                showSuccessPage();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loading-overlay').classList.remove('active');
+                alert('Hubo un error al enviar el formulario. Por favor intenta nuevamente.');
+            });
+        }
+        
+        function showSuccessPage() {
+            document.getElementById('loading-overlay').classList.remove('active');
+            currentPage = 9;
+            showPage(9);
+            updateProgress();
+        }
+        
+        // ============================================
+        // LIMPIAR ERRORES AL ESCRIBIR
+        // ============================================
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+        
+        document.querySelectorAll('.option-card input[required]').forEach(input => {
+            input.addEventListener('change', function() {
+                this.closest('.option-card')?.classList.remove('error');
+            });
+        });
+    </script>
+</body>
+</html>
