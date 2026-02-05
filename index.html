@@ -256,6 +256,12 @@
             margin-bottom: 24px;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .form-label {
             display: block;
             font-size: 13px;
@@ -305,6 +311,36 @@
         }
 
         /* ============================================
+           MENSAJE MOTIVACIONAL ANTES DEL ENVÍO
+           ============================================ */
+        
+        .motivational-banner {
+            background: var(--negro-fondo);
+            border: 2px solid var(--rojo-principal);
+            border-radius: 12px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.15);
+        }
+
+        .motivational-text {
+            font-size: 15px;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .motivational-text .highlight-red {
+            color: var(--rojo-principal);
+            font-weight: 700;
+        }
+
+        .motivational-text .highlight-white {
+            color: var(--blanco);
+            font-weight: 700;
+        }
+
+        /* ============================================
            RADIO BUTTONS Y CHECKBOXES ESTILIZADOS
            ============================================ */
         
@@ -327,6 +363,9 @@
                 grid-template-columns: 1fr;
             }
             .options-grid.three-column {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
                 grid-template-columns: 1fr;
             }
         }
@@ -672,6 +711,14 @@
             .signature-date {
                 grid-template-columns: 1fr;
             }
+            
+            .motivational-banner {
+                padding: 20px 15px;
+            }
+            
+            .motivational-text {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -700,17 +747,12 @@
                         <h1 class="tagline">¿ESTÁS DISPUESTO A <span class="highlight">CAMBIAR</span> TU FÍSICO?</h1>
                         
                         <p class="proposal">
-                            TE REGALAMOS EL PRIMER PLAN DE ENTRENAMIENTO Y TE ACOMPAÑAREMOS CON REVISIONES CADA SEMANA PARA REVISAR TU PROGRESO.<br><br>
-                            SI TE GUSTA TE UNIRÁS A NUESTRO EQUIPO <span class="gym-bros">GYM BROS</span>.
+                            Llenando este formulario estarás más cerca de tu propósito y serás parte de la comunidad <span class="gym-bros">Gym.Bros.Elite</span>.
                         </p>
                         
                         <div class="slogan">
-                            "No estarás solo en esto. Estaremos a tu disposición siempre que lo necesites."
+                            "Estamos para guiar tu proceso y para CRECER juntos"
                         </div>
-                        
-                        <p class="intro-text">
-                            Antes de crear tu plan personalizado, necesitamos conocerte mejor. Esta ficha de evaluación nos ayudará a diseñar un programa que se ajuste perfectamente a tu situación actual, tus metas y tu estilo de vida. Tómate tu tiempo para responder con honestidad: mientras más preciso seas, mejores serán los resultados.
-                        </p>
                         
                         <div class="time-indicator">
                             ⏱️ Tiempo estimado: 5-7 minutos
@@ -729,9 +771,20 @@
                         <div class="section-divider"></div>
                     </div>
                     
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Nombre *</label>
+                            <input type="text" class="form-input" name="A1_Nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Apellidos *</label>
+                            <input type="text" class="form-input" name="A1_Apellidos" placeholder="Tus apellidos" required>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
-                        <label class="form-label">Nombre y Apellidos *</label>
-                        <input type="text" class="form-input" name="A1_Nombre_Apellidos" placeholder="Tu nombre completo" required>
+                        <label class="form-label">Número de Identificación *</label>
+                        <input type="text" class="form-input" name="A1_DNI" placeholder="DNI o NIE" required>
                     </div>
                     
                     <div class="form-group">
@@ -1117,6 +1170,19 @@
                         <div class="section-divider"></div>
                     </div>
                     
+                    <!-- Mensaje Motivacional -->
+                    <div class="motivational-banner">
+                        <p class="motivational-text">
+                            <span class="highlight-white">ESTÁS A PUNTO DE SER PARTE DE NUESTRA COMUNIDAD DE GYM BROS ELITE.</span>
+                            <br><br>
+                            <span class="highlight-red">POR TANTO TE REGALAMOS DOS SEMANAS DE ACOMPAÑAMIENTO EN TU ENTRENAMIENTO CON REVISIONES Y AJUSTES CADA SEMANA PARA REVISAR TU PROGRESO.</span>
+                            <br><br>
+                            <span class="highlight-white">Porque con</span>
+                            <span class="highlight-red"> Gym.Bros.Elite</span>
+                            <span class="highlight-white"> el dolor se comparte y el progreso se disfruta.</span>
+                        </p>
+                    </div>
+                    
                     <div class="consent-section">
                         <p class="consent-text">
                             Confirmo que la información proporcionada es veraz en la medida de mi conocimiento y entiendo que el plan de entrenamiento y alimentación está basado en estos datos. También acepto que podré detener o modificar el programa si siento incomodidad o malestar.<br><br>
@@ -1207,8 +1273,8 @@
         // ============================================
         // CONFIGURACIÓN - URL DEL APPS SCRIPT
         // ============================================
-        // IMPORTANTE: Reemplaza esta URL con la de tu despliegue
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyq1A1pd8mmxb7I0wcWUMegE4TKR8l7mx536CjVtLmbi6QY2tM5qWArvZwyXPBbaWBMIw/exec';
+        // URL del Apps Script de GymBros
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzplML1ZxCHT5oe3Ec8UxCdif_xLl8t8p2uz03ql8v95sR03w6vHjXJfdO74P12WhKbsQ/exec';
         
         // ============================================
         // VARIABLES DE ESTADO
